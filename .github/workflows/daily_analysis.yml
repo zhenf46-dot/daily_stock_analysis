@@ -1,29 +1,36 @@
 # .github/workflows/daily_analysis.yml
-name: Daily Stock & Future Analysis
+名称: 每日股票与期货分析
 
-on:
-  schedule:
+启用:
+计划:
     - cron: "0 10 * * 1-5"  # 北京时间18:00
-  workflow_dispatch:
+ 工作流调度:
 
-jobs:
-  analyze:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 拉取代码
-        uses: actions/checkout@v4
+作业:
+分析:
+运行于: ubuntu-latest
+工作:
+分析:
+运行于: ubuntu-latest
 
-      - name: 设置Python环境
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.9"
+    # 👇 把 env 放在这里，所有步骤都能用
+ 环境:
+      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+      WECHAT_WEBHOOK: ${{ secrets.WECHAT_WEBHOOK }}
 
-      - name: 安装依赖
-        run: python -m pip install --upgrade pip
-             pip install akshare pandas requests  # 这里不要有 google-generativeai
+步骤:
+      - 名称: 拉取代码
+使用: 操作/结账@v4
+
+      - 名称: 设置Python环境
+用途: actions/setup-python@v3
+与:
+Python版本: "3.9"
+
+      - 名称: 安装依赖
+运行: |
+          python -m pip install --upgrade pip
+使用 pip 安装 akshare、pandas 和 requests
 
       - name: 执行分析脚本
-        env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          WECHAT_WEBHOOK: ${{ secrets.WECHAT_WEBHOOK }}
-        run: python main.py
+运行: python main.py

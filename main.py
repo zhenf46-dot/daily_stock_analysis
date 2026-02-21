@@ -7,7 +7,7 @@ import google.generativeai as genai
 
 # 导入配置
 from config import (
-    GEMINI_API_KEY, WECHAT_WEBHOOK,
+    DEEPSEEK_API_KEY, WECHAT_WEBHOOK,
     STOCK_LIST, FUTURE_LIST,
     LANGUAGE, REPORT_LENGTH
 )

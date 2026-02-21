@@ -67,7 +67,8 @@ def send_wechat(msg):
     if not WECHAT_WEBHOOK:
         print("未配置微信Webhook，跳过推送")
         return
-    headers = {"Content-Type": "application/json"}
+    headers = {"Content-Type": "application/json",
+    "Authorization": f"Bearer {DEEPSEEK_API_KEY}"}
     data = {
         "msgtype": "text",
         "text": {"content": msg}

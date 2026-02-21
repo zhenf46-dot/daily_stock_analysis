@@ -61,7 +61,7 @@ jobs:
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || secrets.GEMINI_MODEL || 'gemini-3-flash-preview' }}
           GEMINI_MODEL_FALLBACK: ${{ vars.GEMINI_MODEL_FALLBACK || secrets.GEMINI_MODEL_FALLBACK || 'gemini-2.5-flash' }}
           GEMINI_REQUEST_DELAY: '3.0'
-          sk-9085536762ae4be48ffc67553aa858d2: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
  
           # OpenAI 兼容 API（备选）
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

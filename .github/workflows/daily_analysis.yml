@@ -1,36 +1,30 @@
-# .github/workflows/daily_analysis.yml
-名称: 每日股票与期货分析
+name: Daily Stock & Future Analysis
 
-启用:
-计划:
-    - cron: "0 10 * * 1-5"  # 北京时间18:00
- 工作流调度:
+# 触发规则：工作日18:00（北京时间，UTC+8=10:00）+ 手动触发
+on:
+  schedule:
+    - cron: "0 10 * * 1-5"
+  workflow_dispatch:
 
-作业:
-分析:
-运行于: ubuntu-latest
-工作:
-分析:
-运行于: ubuntu-latest
-
-    # 👇 把 env 放在这里，所有步骤都能用
- 环境:
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    env:  # <--- 将 env 提升到 jobs 级别
       DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
       WECHAT_WEBHOOK: ${{ secrets.WECHAT_WEBHOOK }}
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
 
-步骤:
-      - 名称: 拉取代码
-使用: 操作/结账@v4
+      - name: 设置Python环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
 
-      - 名称: 设置Python环境
-用途: actions/setup-python@v3
-与:
-Python版本: "3.9"
-
-      - 名称: 安装依赖
-运行: |
+      - name: 安装运行依赖
+        run: |
           python -m pip install --upgrade pip
-使用 pip 安装 akshare、pandas 和 requests
+          pip install akshare pandas requests
 
-      - name: 执行分析脚本
-运行: python main.py
+      - name: 执行A股期货分析脚本
+        run: python main.py

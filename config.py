@@ -3,7 +3,7 @@ import os
 
 # ===================== 必改配置 =====================
 # 1. AI 分析接口配置（二选一即可，推荐 Gemini）
-# DEEPSEEK_API_KEY = os.getenv("sk-9085536762ae4be48ffc67553aa858d2")  # 若用深度求索，替换此行
+# DEEPSEEK_API_KEY = os.getenv("sk-9085536762ae4be48ffc67553aa858d2")  # 括号里的字符串要和Secrets名称一致
 
 # 2. 推送配置（企业微信机器人）
 WECHAT_WEBHOOK = os.getenv("https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=eb82dddc-bb30-4fbc-bd09-d088e9a68732")  # 从 GitHub Secrets 读取，也可直接填地址

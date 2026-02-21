@@ -1,0 +1,6 @@
+daily_stock_analysis/
+├── .github/
+│   └── workflows/
+│       └── daily_analysis.yml  # 定时任务配置
+├── config.py                   # 核心配置（自选股/期货/API）
+└── main.py                     # 分析主脚本

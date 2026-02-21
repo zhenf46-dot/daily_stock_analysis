@@ -9,6 +9,7 @@ venv/
 .venv/
 env/
 .env.local
+.env
 
 # 忽略 IDE
 .idea/
